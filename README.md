@@ -1,4 +1,4 @@
-# Question Classifier Webapp
+# Question Classifier WebApp
 -------
 
 ## ML Modules
