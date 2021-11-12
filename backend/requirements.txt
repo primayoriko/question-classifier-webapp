@@ -1,0 +1,8 @@
+keras
+matplotlib
+nltk
+numpy
+pandas
+tensorflow==2.0
+torch
+transformers
