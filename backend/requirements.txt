@@ -3,6 +3,14 @@ matplotlib
 nltk
 numpy
 pandas
-tensorflow==2.0
+tensorflow
 torch
 transformers
+django
+djangorestframework
+django-filter
+django-cors-headers
+markdown
+pyyaml
+uritemplate
+pygment
