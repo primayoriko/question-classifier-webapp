@@ -8,8 +8,8 @@ from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser 
 
 from questions.models import Question
-from questions.services import *
 from questions.serializers import QuestionSerializer
+from questions.services import *
 
 
 @api_view(['GET', 'POST'])
@@ -28,23 +28,31 @@ def question_base_handler(request):
         print(err)
         return JsonResponse({"message": "something unexcepted happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-def question_detail_handler(request):
+@api_view(['GET'])
+def question_detail_handler(request, id):
     try:
-        return JsonResponse({"status": "success"}, status=status.HTTP_200_OK)
+        question_detail = get_question_detail_by_id(id)
+        return JsonResponse(question_detail, status=status.HTTP_200_OK)
     except Exception as err:
         print(err)
         return JsonResponse({"message": "something unexcepted happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+@api_view(['POST'])
 def question_grammar_check_handler(request):
     try:
-        return JsonResponse({"status": "success"}, status=status.HTTP_200_OK)
+        data = JSONParser().parse(request)
+        grammar_correctness = check_grammar(data['text'])
+        return JsonResponse({"grammar_correctness": grammar_correctness}, status=status.HTTP_200_OK)
     except Exception as err:
         print(err)
         return JsonResponse({"message": "something unexcepted happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-def question_similiarity_check_handler(request):
+@api_view(['POST'])
+def similiar_question_check_handler(request):
     try:
-        return JsonResponse({"status": "success"}, status=status.HTTP_200_OK)
+        data = JSONParser().parse(request)
+        similiar_questions = check_all_similiar(data['text'])
+        return JsonResponse({"similiar_questions": similiar_questions}, status=status.HTTP_200_OK)
     except Exception as err:
         print(err)
         return JsonResponse({"message": "something unexcepted happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

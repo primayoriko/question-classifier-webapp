@@ -17,6 +17,18 @@ def get_questions_by_topics():
         res[topic] = arr
     return res
 
+def get_question_detail_by_id(id):
+    try: 
+        question = Question.objects.get(pk=id) 
+    except Question.DoesNotExist: 
+        question = None
+
+    question = QuestionSerializer(question).data
+    similiars = check_all_similiar(question["question_text"])
+    question["similiars"] = similiars
+
+    return question
+
 def insert_question_by_text(question_text):
     topic = predict_topic(question_text)
     Question.create_instance(topic, question_text).save()
@@ -30,24 +42,10 @@ def check_all_similiar(question_text):
 
     similiar_question = []
     for q in questions:
-        if similiarity_predict(question_text, q):
+        if similiarity_predict(question_text, q["question_text"]):
             similiar_question.append(q)
 
     return similiar_question
 
 def predict_topic(question_text):
     return Topics[0]
-
-def get_question_by_id(id):
-    try: 
-        question = Question.objects.get(pk=id) 
-    except Question.DoesNotExist: 
-        question = None
-
-    question = QuestionSerializer(question).data
-    similiars = check_all_similiar(question.question_text)
-
-    return {
-        "question": question,
-        "similiars": similiars
-    }
