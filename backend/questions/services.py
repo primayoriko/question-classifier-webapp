@@ -55,5 +55,5 @@ def check_all_similiar(question_text, topic=None, id=None):
 
     return similiar_question
 
-def predict_topic(question_text):
+def check_topic_by_text(question_text):
     return topic_classification_predict(question_text)
