@@ -32,6 +32,8 @@ def question_base_handler(request):
 def question_detail_handler(request, id):
     try:
         question_detail = get_question_detail_by_id(id)
+        if question_detail is None:
+            return JsonResponse({"message": "question with specified id not found"}, status=status.HTTP_404_NOT_FOUND)
         return JsonResponse(question_detail, status=status.HTTP_200_OK)
     except Exception as err:
         print(err)
@@ -41,7 +43,7 @@ def question_detail_handler(request, id):
 def question_grammar_check_handler(request):
     try:
         data = JSONParser().parse(request)
-        grammar_correctness = check_grammar(data['text'])
+        grammar_correctness = check_grammar_by_text(data['text'])
         return JsonResponse({"grammar_correctness": grammar_correctness}, status=status.HTTP_200_OK)
     except Exception as err:
         print(err)
@@ -51,8 +53,29 @@ def question_grammar_check_handler(request):
 def similiar_question_check_handler(request):
     try:
         data = JSONParser().parse(request)
-        similiar_questions = check_all_similiar(data['text'])
+        topic = data.get('topic', None)
+        similiar_questions = check_all_similiar(data['text'], topic)
         return JsonResponse({"similiar_questions": similiar_questions}, status=status.HTTP_200_OK)
+    except Exception as err:
+        print(err)
+        return JsonResponse({"message": "something unexcepted happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['POST'])
+def topic_check_handler(request):
+    try:
+        data = JSONParser().parse(request)
+        topic = check_topic_by_text(data['text'])
+        return JsonResponse({"topic": topic}, status=status.HTTP_200_OK)
+    except Exception as err:
+        print(err)
+        return JsonResponse({"message": "something unexcepted happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['DELETE'])
+def delete_handler(request):
+    try:
+        id = request.GET.get('id', None)
+        question = delete_question(id)
+        return JsonResponse({"deleted_question": question}, status=status.HTTP_200_OK)
     except Exception as err:
         print(err)
         return JsonResponse({"message": "something unexcepted happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
