@@ -1,4 +1,4 @@
-# ML Models
+# ML Modules
 -------
 
 because the size of model is very big, so it's can't be placed in repository. instead, you should train it by yourself, by the code in `../../ml-train/{module_name}` (relative path) or `/ml-train/{module_name}` (absolute path from project root). Alternatively, you could download the model directly here for each module
