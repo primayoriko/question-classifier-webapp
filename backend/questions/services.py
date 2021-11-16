@@ -31,8 +31,19 @@ def get_question_detail_by_id(id):
     return question
 
 def insert_question_by_text(question_text):
+    isGrammarValid = check_grammar_by_text(question_text)
     topic = check_topic_by_text(question_text)
-    Question.create_instance(topic, question_text).save()
+    isQuestionUnique = len(check_all_similiar(question_text, topic=topic))==0
+    if (isGrammarValid and isQuestionUnique):
+        Question.create_instance(topic, question_text).save()
+        return True, None
+    else:
+        causes = []
+        if (not isGrammarValid):
+            causes.append("the grammar is invalid")
+        if (not isQuestionUnique):
+            causes.append("this question is not unique")
+        return False, causes
 
 def delete_question(id=None):
     if id is None:

@@ -20,8 +20,11 @@ def question_base_handler(request):
             return JsonResponse(questions_by_topics, safe=True)
         elif request.method == 'POST':
             data = JSONParser().parse(request)
-            insert_question_by_text(data['text'])
-            return HttpResponse("", status=201)        
+            isSuccess, causes = insert_question_by_text(data['text'])
+            if (isSuccess):
+                return HttpResponse("", status=201)        
+            else:
+                return JsonResponse({"error": ", ".join(causes)}, status=status.HTTP_404_NOT_FOUND)
         else: 
             return JsonResponse({"error": "method not allowed"}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     except Exception as err:

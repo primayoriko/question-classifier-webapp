@@ -28,7 +28,7 @@ function checkGrammar(event){
         alert("Error: " + textStatus);
     });
 }
-function checkGrammar(event){
+function checkTopic(event){
     event.preventDefault();
     const inputQuestion = document.getElementById("inputQuestion").value;
     console.log("findTopic");
@@ -96,11 +96,12 @@ function submitQuestion(event){
         alert("Input success");
         window.location.href = "";
     }).fail(function(jqXHR, textStatus){
-        console.log(textStatus);
-        alert("Error: " + textStatus);
+        console.log(jqXHR, textStatus);
+        alert("Error: " + jqXHR.responseText);
     });   
 }
 
 buttonCheckGrammar.addEventListener('click', checkGrammar);
 buttonCheckSimilarity.addEventListener('click', checkSimilarity);
 buttonSubmit.addEventListener('click', submitQuestion);
+buttonFindTopic.addEventListener('click', checkTopic);
