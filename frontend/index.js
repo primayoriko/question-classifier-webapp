@@ -1,5 +1,6 @@
 const buttonCheckGrammar =  document.querySelector("#buttonCheckGrammar");
 const buttonCheckSimilarity =  document.querySelector("#buttonCheckSimilarity");
+const buttonPredictTopic =  document.querySelector("#buttonPredictTopic");
 const buttonSubmit = document.querySelector("#buttonSubmit");
 
 function checkGrammar(event){
@@ -76,11 +77,32 @@ function submitQuestion(event){
         alert("Input success");
         window.location.href = "";
     }).fail(function(jqXHR, textStatus){
+        console.log(jqXHR, textStatus);
+        alert("Error: " + jqXHR.responseText);
+    });   
+}
+
+function predictTopic(event){
+    event.preventDefault();
+    const inputQuestion = document.getElementById("inputQuestion").value;
+    console.log("predictTopic");
+    console.log(inputQuestion);
+    $.ajax({
+        url: 'http://localhost:8000/api/questions/checker/topic',
+        method: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify({"text": inputQuestion})
+    }).done(function(responseBody) {
+        console.log(responseBody);
+        let predictedTopic = responseBody['topic']
+        $("#predictedTopic").html(`topic: ${predictedTopic}`)
+    }).fail(function(jqXHR, textStatus){
         console.log(textStatus);
         alert("Error: " + textStatus);
-    });   
+    });
 }
 
 buttonCheckGrammar.addEventListener('click', checkGrammar);
 buttonCheckSimilarity.addEventListener('click', checkSimilarity);
 buttonSubmit.addEventListener('click', submitQuestion);
+buttonPredictTopic.addEventListener('click', predictTopic)
