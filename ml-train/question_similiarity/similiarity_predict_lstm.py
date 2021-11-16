@@ -1,3 +1,6 @@
+# Author: Naufa Prima Yoriko - 13518146
+
+import os
 import pickle
 import re
 
@@ -12,10 +15,13 @@ from nltk.stem import SnowballStemmer
 from keras.preprocessing.sequence import pad_sequences
 
 
-model = tf.keras.models.load_model('lstm_250_150_0.31_0.22_2.h5')
+model_file_path = os.path.join(os.getcwd(), 'ml', 'lstm_250_150_0.31_0.22_2.h5')
+tokenizer_file_path = os.path.join(os.getcwd(), 'ml', 'tokenizer.pickle')
+
+model = tf.keras.models.load_model(model_file_path)
 
 tokenizer = None
-with open('tokenizer.pickle', 'rb') as handle:
+with open(tokenizer_file_path, 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 def preprocess_text(text, lowercasing=True, remove_punctuation=False, remove_stopwords=False, stem_words=False):
@@ -60,7 +66,7 @@ def preprocess_text(text, lowercasing=True, remove_punctuation=False, remove_sto
     
     if remove_stopwords:
         text = text.split()
-        stop_words = set(stopwords.words("english"))
+        stop_words = set(stopwords.words('english'))
         text = [w for w in text if not w in stop_words]
         text = " ".join(text)
     
