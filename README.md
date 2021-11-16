@@ -17,11 +17,15 @@ The training codes and data link are saved in `ml-train` directory, while predic
 
 Here are some screenshots of our app
 
-![main-page](docs/screenshots/sc-webapp-1.jpg)
+- Question creation page
 
-![main-page-2](docs/screenshots/sc-webapp-2.jpg)
+    ![main-page](docs/screenshots/sc-webapp-1.jpg)
 
-![list-page](docs/screenshots/sc-webapp-3.jpg)
+    ![main-page-2](docs/screenshots/sc-webapp-2.jpg)
+
+- Questions list page
+
+    ![list-page](docs/screenshots/sc-webapp-3.jpg)
 
 ## API Docs
 ------

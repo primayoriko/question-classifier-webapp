@@ -15,8 +15,8 @@ from nltk.stem import SnowballStemmer
 from keras.preprocessing.sequence import pad_sequences
 
 
-model_file_path = os.path.join(os.getcwd(), 'ml', 'lstm_250_150_0.31_0.22_2.h5')
-tokenizer_file_path = os.path.join(os.getcwd(), 'ml', 'tokenizer.pickle')
+model_file_path = os.path.join(os.getcwd(), 'lstm_250_150_0.31_0.22_2.h5')
+tokenizer_file_path = os.path.join(os.getcwd(), 'tokenizer.pickle')
 
 model = tf.keras.models.load_model(model_file_path)
 

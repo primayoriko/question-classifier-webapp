@@ -10,7 +10,7 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=Tru
 config = BertConfig.from_pretrained('bert-base-uncased')
 config.num_labels = 2
 
-file_path = os.path.join(os.getcwd(), 'ml', 'question_pair_model.bin')
+file_path = os.path.join(os.getcwd(), 'question_pair_model.bin')
 model = BertForSequenceClassification.from_pretrained(file_path, config=config)
 
 def similiarity_predict(text1, text2):
