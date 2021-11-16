@@ -1,6 +1,7 @@
 const buttonCheckGrammar =  document.querySelector("#buttonCheckGrammar");
 const buttonCheckSimilarity =  document.querySelector("#buttonCheckSimilarity");
 const buttonSubmit = document.querySelector("#buttonSubmit");
+const buttonFindTopic = document.querySelector("#buttonFindTopic")
 
 function checkGrammar(event){
     event.preventDefault();
@@ -27,7 +28,26 @@ function checkGrammar(event){
         alert("Error: " + textStatus);
     });
 }
-
+function checkGrammar(event){
+    event.preventDefault();
+    const inputQuestion = document.getElementById("inputQuestion").value;
+    console.log("findTopic");
+    console.log(inputQuestion);
+    $.ajax({
+        url: 'http://localhost:8000/api/questions/checker/topic',
+        method: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify({"text": inputQuestion})
+    }).done(function(responseBody) {
+        console.log(responseBody);
+        let topicQuestion = responseBody['topic']
+        console.log(topicQuestion)
+        $("#resultTopic").html(topicQuestion)
+    }).fail(function(jqXHR, textStatus){
+        console.log(textStatus);
+        alert("Error: " + textStatus);
+    });
+}
 function checkSimilarity(event){
     event.preventDefault();
     const inputQuestion = document.getElementById("inputQuestion").value;
