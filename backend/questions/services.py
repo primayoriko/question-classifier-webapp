@@ -3,6 +3,7 @@ from questions.serializers import QuestionSerializer
 
 from ml.grammar_correctness_predict import grammar_correctness_predict
 from ml.similiarity_predict import similiarity_predict
+from ml.topic_classification_predict import topic_classification_predict
 
 
 def get_questions_by_topics():
@@ -54,5 +55,5 @@ def check_all_similiar(question_text, topic=None, id=None):
 
     return similiar_question
 
-def check_topic_by_text(question_text):
-    return Topics[0]
+def predict_topic(question_text):
+    return topic_classification_predict(question_text)
