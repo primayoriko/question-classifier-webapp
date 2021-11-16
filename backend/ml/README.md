@@ -5,7 +5,7 @@ because the size of model is very big, so it's can't be placed in repository. in
 
 1. [**Linguistic Acceptability**](https://drive.google.com/file/d/1ejelDtROYuXHoaaggux8xYi7jfVjEV-d/view?usp=sharing)
    
-2. **Question Similiarity**, there is two approach, each of them <br>
+2. **Question Similarity**, there is two approach, each of them <br>
    1. [Pretrained BERT](https://drive.google.com/file/d/1A9TCExPubflPTo3Xmod6id7lG43UKGCI/view?usp=sharing)
    2. [BiLSTM with GloVe Word Embedding](https://drive.google.com/drive/folders/1vsQ4YmdL5yREkwCgXaKnjbhTuvKwf3Ex?usp=sharing)
    
