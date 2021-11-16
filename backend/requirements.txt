@@ -14,4 +14,3 @@ markdown
 pyyaml
 uritemplate
 pygments
-django-cors-headers
