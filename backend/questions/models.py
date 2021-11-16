@@ -1,7 +1,13 @@
 from django.db import models
 
-# Create your models here.
-Topics = ('A', 'B', 'C')
+Topics = ('BUSINESS', 
+    'ENTERTAINMENT', 
+    'HEALTH', 
+    'NATION', 
+    'SCIENCE', 
+    'SPORTS',
+    'TECHNOLOGY',
+    'WORLD')
 
 class Question(models.Model):
     question_text = models.CharField(max_length=500)

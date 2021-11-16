@@ -22,28 +22,35 @@ def get_question_detail_by_id(id):
     try: 
         question = Question.objects.get(pk=id) 
     except Question.DoesNotExist: 
-        question = None
+        return None
 
     question = QuestionSerializer(question).data
-    similiars = check_all_similiar(question["question_text"])
+    similiars = check_all_similiar(question["question_text"], question["topic"], id)
     question["similiars"] = similiars
 
     return question
 
 def insert_question_by_text(question_text):
-    topic = predict_topic(question_text)
+    topic = check_topic_by_text(question_text)
     Question.create_instance(topic, question_text).save()
 
-def check_grammar(question_text):
+def delete_question(id=None):
+    if id is None:
+        return Question.objects.filter().delete()
+    else:
+        return Question.objects.filter(pk=id).delete()
+
+def check_grammar_by_text(question_text):
     return grammar_correctness_predict(question_text)
 
-def check_all_similiar(question_text):
+def check_all_similiar(question_text, topic=None, id=None):
+    topic = topic if topic is not None else check_topic_by_text(question_text)
     questions = Question.objects.all()
     questions = QuestionSerializer(questions, many=True).data
-
     similiar_question = []
+
     for q in questions:
-        if similiarity_predict(question_text, q["question_text"]):
+        if topic == q["topic"] and id != str(q["id"]) and similiarity_predict(question_text, q["question_text"]):
             similiar_question.append(q)
 
     return similiar_question

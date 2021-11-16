@@ -44,7 +44,7 @@
 					"header": [
 						{
 							"key": "Date",
-							"value": "Sun, 14 Nov 2021 08:53:23 GMT"
+							"value": "Tue, 16 Nov 2021 03:16:03 GMT"
 						},
 						{
 							"key": "Server",
@@ -56,11 +56,11 @@
 						},
 						{
 							"key": "Vary",
-							"value": "Accept, Cookie"
+							"value": "Accept, Cookie, Origin"
 						},
 						{
 							"key": "Allow",
-							"value": "OPTIONS, POST, GET"
+							"value": "POST, OPTIONS, GET"
 						},
 						{
 							"key": "X-Frame-Options",
@@ -68,7 +68,7 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "190"
+							"value": "185"
 						},
 						{
 							"key": "X-Content-Type-Options",
@@ -80,7 +80,67 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"A\": [\n        {\n            \"id\": 1,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        },\n        {\n            \"id\": 2,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        },\n        {\n            \"id\": 3,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        }\n    ],\n    \"B\": [],\n    \"C\": []\n}"
+					"body": "{\n    \"BUSINESS\": [\n        {\n            \"id\": 8,\n            \"topic\": \"BUSINESS\",\n            \"question_text\": \"piqiasdas\"\n        }\n    ],\n    \"ENTERTAINMENT\": [],\n    \"HEALTH\": [],\n    \"NATION\": [],\n    \"SCIENCE\": [],\n    \"SPORTS\": [],\n    \"TECHNOLOGY\": [],\n    \"WORLD\": []\n}"
+				},
+				{
+					"name": "Get All by Topics - No Result",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/questions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Nov 2021 03:22:12 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "125"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"BUSINESS\": [],\n    \"ENTERTAINMENT\": [],\n    \"HEALTH\": [],\n    \"NATION\": [],\n    \"SCIENCE\": [],\n    \"SPORTS\": [],\n    \"TECHNOLOGY\": [],\n    \"WORLD\": []\n}"
 				}
 			]
 		},
@@ -102,7 +162,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "2"
 						}
 					]
 				}
@@ -174,6 +234,303 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"id\": 1,\n    \"topic\": \"A\",\n    \"question_text\": \"piqiasdas\",\n    \"similiars\": [\n        {\n            \"id\": 1,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        },\n        {\n            \"id\": 2,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        },\n        {\n            \"id\": 3,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Get By Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/questions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Nov 2021 03:10:49 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "77"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 8,\n    \"topic\": \"BUSINESS\",\n    \"question_text\": \"piqiasdas\",\n    \"similiars\": []\n}"
+				},
+				{
+					"name": "Get By Id - Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/questions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Nov 2021 03:15:09 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"question with specified id not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/questions/delete",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"questions",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/questions/delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Nov 2021 03:15:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "DELETE, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"deleted_question\": [\n        1,\n        {\n            \"questions.Question\": 1\n        }\n    ]\n}"
+				},
+				{
+					"name": "Delete All",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/questions/delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Nov 2021 03:22:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, DELETE"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"deleted_question\": [\n        6,\n        {\n            \"questions.Question\": 6\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -436,7 +793,7 @@
 					"header": [
 						{
 							"key": "Date",
-							"value": "Sun, 14 Nov 2021 09:00:58 GMT"
+							"value": "Tue, 16 Nov 2021 02:58:23 GMT"
 						},
 						{
 							"key": "Server",
@@ -448,7 +805,7 @@
 						},
 						{
 							"key": "Vary",
-							"value": "Accept, Cookie"
+							"value": "Accept, Cookie, Origin"
 						},
 						{
 							"key": "Allow",
@@ -460,7 +817,7 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "189"
+							"value": "86"
 						},
 						{
 							"key": "X-Content-Type-Options",
@@ -472,7 +829,108 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"similiar_questions\": [\n        {\n            \"id\": 1,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        },\n        {\n            \"id\": 2,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        },\n        {\n            \"id\": 3,\n            \"topic\": \"A\",\n            \"question_text\": \"piqiasdas\"\n        }\n    ]\n}"
+					"body": "{\n    \"similiar_questions\": [\n        {\n            \"id\": 8,\n            \"topic\": \"BUSINESS\",\n            \"question_text\": \"piqiasdas\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Check Topic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"piqiasdas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/questions/checker/topic",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"questions",
+						"checker",
+						"topic"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Check Topic",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"piqiasdas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/questions/checker/topic",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								"checker",
+								"topic"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Nov 2021 02:57:35 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "21"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"topic\": \"BUSINESS\"\n}"
 				}
 			]
 		}
